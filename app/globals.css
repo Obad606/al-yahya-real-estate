@@ -1,0 +1,215 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Al-Yahya Real Estate custom color system with exact HEX values */
+:root {
+  /* Light Mode - Beige background with Royal Blue cards */
+  --background: #ecdfcd; /* Beige page background */
+  --foreground: #8c6a00; /* Gold Dark primary text */
+  --card: #134060; /* Royal Blue card background */
+  --card-foreground: #f9f4ec; /* Light text on blue cards */
+  --popover: #0a3d62;
+  --popover-foreground: #f9f4ec;
+  --primary: #d4af37; /* Gold accent */
+  --primary-foreground: #0a3d62;
+  --secondary: #e6d8c4; /* Subtle borders */
+  --secondary-foreground: #8c6a00;
+  --muted: #0a0f22;
+  --muted-foreground: #686060;
+  --accent: #d4af37; /* Gold accent for links */
+  --accent-foreground: #0a3d62;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: #e6d8c4; /* Subtle dividers */
+  --input: #f9f4ec;
+  --ring: #d4af37;
+  --chart-1: #0a3d62;
+  --chart-2: #d4af37;
+  --chart-3: #8c6a00;
+  --chart-4: #f5e9d7;
+  --chart-5: #e6d8c4;
+  --radius: 1.125rem; /* 18px for rounded-2xl */
+  --sidebar: #0a3d62;
+  --sidebar-foreground: #f9f4ec;
+  --sidebar-primary: #d4af37;
+  --sidebar-primary-foreground: #0a3d62;
+  --sidebar-accent: #8c6a00;
+  --sidebar-accent-foreground: #f9f4ec;
+  --sidebar-border: #e6d8c4;
+  --sidebar-ring: #d4af37;
+}
+
+/* Dark Mode - Deep Blue background with Beige cards */
+.dark {
+  --background: #0a2740; /* Deep Blue page background */
+  --foreground: #8c6a00; /* Gold Dark primary text */
+  --card: #f5e9d7; /* Beige card background */
+  --card-foreground: #16459c; /* Dark text on beige cards */
+  --popover: #f5e9d7;
+  --popover-foreground: #1f2430;
+  --primary: #d4af37; /* Gold accent */
+  --primary-foreground: #0a2740;
+  --secondary: #2e3a4b; /* Dark borders */
+  --secondary-foreground: #f9f4ec;
+  --muted: #2e3a4b;
+  --muted-foreground: #666870;
+  --accent: #604e13; /* Gold accent for links */
+  --accent-foreground: #9dcac5;
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: #716c3d; /* Dark dividers */
+  --input: #1f2430;
+  --ring: #d4af37;
+  --chart-1: #f5e9d7;
+  --chart-2: #d4af37;
+  --chart-3: #8c6a00;
+  --chart-4: #0a2740;
+  --chart-5: #2e3a4b;
+  --sidebar: #f5e9d7;
+  --sidebar-foreground: #1f2430;
+  --sidebar-primary: #d4af37;
+  --sidebar-primary-foreground: #0b86f1;
+  --sidebar-accent: #8c6a00;
+  --sidebar-accent-foreground: #f9f4ec;
+  --sidebar-border: #2e3a4b;
+  --sidebar-ring: #d4af37;
+}
+
+/* Arabic and Latin fonts configuration */
+@theme inline {
+  --font-sans: "Cairo", "Inter", "system-ui", "sans-serif";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --font-arabic-body: "Tajawal", "system-ui", "sans-serif";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Smooth transitions for theme and direction changes */
+  html {
+    transition: background-color 220ms ease-out;
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Skip to content link for accessibility */
+  .skip-to-content {
+    @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-6 focus:py-3 focus:bg-primary focus:text-primary-foreground focus:rounded-2xl focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-ring;
+  }
+  @keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  animation: marquee 20s linear infinite;
+}
+/* 🔹 حركة شركاء النجاح */
+@keyframes slide-once {
+  0% {
+    transform: translateX(0);
+  }
+  90% {
+    transform: translateX(-90%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-once {
+  animation: slide-once 25s linear infinite;
+}
+
+/* توقف مؤقت عند المرور */
+.animate-slide-once:hover {
+  animation-play-state: paused;
+}
+.slider {
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.slide-track {
+  display: flex;
+  width: calc(250px * 20); /* عدد الشعارات × عرض العنصر */
+  animation: scroll 25s linear infinite;
+}
+
+.slide {
+  width: auto; /* بدل 250px */
+  margin: 0 30px; /* بدل 0 50px أو حسب المسافة التي تريد */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(250px * 10)); /* نصف العدد لتكرار الانسياب */
+  }
+}
+
+}
